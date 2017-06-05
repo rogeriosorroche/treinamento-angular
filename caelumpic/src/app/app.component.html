@@ -3,9 +3,11 @@
     <h1 class="main-title">{{title}}</h1>
   </header>
   <article class="container">
-    <foto url="assets/img/leao.jpg" titulo="Foto de um Leão">
-      Carregando...
-    </foto>
+    <painel *ngFor="let foto of fotos" titulo="{{foto.titulo}}" class="col-md-2">
+      <foto url="{{foto.url}}" titulo="{{foto.titulo}}">
+        Carregando...
+      </foto>
+    </painel>
   </article>
 </main>
 

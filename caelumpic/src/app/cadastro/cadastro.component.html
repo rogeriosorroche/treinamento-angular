@@ -1,0 +1,24 @@
+<h1 class="text-center">Cadastro de Foto</h1>
+
+<article class="container">
+  <form class="row" (submit)="salve($event)">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="">Título:</label>
+        <input name="titulo" [(ngModel)]="foto.titulo" type="text" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="">URL:</label>
+        <input name="url" [(ngModel)]="foto.url" type="text" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="">Descrição:</label>
+        <textarea name="descricao" [(ngModel)]="foto.descricao" class="form-control"></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Salvar</button>
+
+      <a [routerLink]="['']" class="btn btn-primary">Voltar</a>
+    </div>
+  </form>
+</article>

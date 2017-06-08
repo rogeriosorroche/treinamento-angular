@@ -1,0 +1,24 @@
+<main class="main">
+  <header class="jumbotron">
+    <h1 class="main-title">Caelum Pic</h1>
+  </header>
+  <nav class="row" style="margin-bottom: 10px;">
+     <div class="col-md-12">
+         <form>
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <a [routerLink]="['cadastro']" class="btn btn-primary">Nova Foto</a>
+                </span>
+                <input #textoProcurado class="form-control" type="text" placeholder="Buscar" (input)="0"/>
+            </div>
+         </form>
+     </div>
+  </nav>
+  <article class="container">
+    <painel *ngFor="let foto of (fotos | filtroPorTitulo:textoProcurado.value)" [titulo]="foto.titulo" class="col-md-2">
+      <foto [url]="foto.url" [titulo]="foto.titulo">
+        Carregando...
+      </foto>
+    </painel>
+  </article>
+</main>

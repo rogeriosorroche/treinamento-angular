@@ -7,17 +7,4 @@ import { Http } from '@angular/http';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title: string = 'Caelum Pic';
-  fotos: Object[];
-
-  constructor(http: Http) {
-
-    http.get('http://localhost:3000/v1/fotos')
-        .map(res => res.json())
-        .subscribe(fotos => this.fotos = fotos
-                  ,erro => console.log(erro));
-
-  }
-
-}
+export class AppComponent {}

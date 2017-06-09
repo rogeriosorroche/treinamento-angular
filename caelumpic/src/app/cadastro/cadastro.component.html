@@ -1,30 +1,45 @@
 <h1 class="text-center">Cadastro de Foto</h1>
 
 <article class="container">
-  <form class="row" (submit)="salve($event)">
+
+  <!-- <form #formControl="ngForm" class="row" (submit)="salve($event)"> -->
+  <form [formGroup]="formControl" class="row" (submit)="salve($event)">
     <div class="col-md-6">
       <div class="form-group">
         <label for="">Título:</label>
-        <input name="titulo" 
+        <input formControlName="titulo" 
                [(ngModel)]="foto.titulo" 
-               required
                type="text" 
                class="form-control">
+        <div *ngIf="(formControl.controls.titulo.dirty || formControl.controls.titulo.touched) && formControl.controls.titulo.invalid">
+          <span *ngIf="formControl.controls.titulo.errors.required" class="alert-danger">
+            Título deve ser informado
+          </span>
+          <span *ngIf="formControl.controls.titulo.errors.minlength" class="alert-danger">
+            Tamanho mínimo de {{formControl.controls.titulo.errors.minlength.requiredLength}} caracteres.
+            Tamanho digitado: {{formControl.controls.titulo.errors.minlength.actualLength}}
+          </span>
+        </div>
       </div>
       <div class="form-group">
         <label for="">URL:</label>
-        <input name="url" 
+        <input formControlName="url" 
                [(ngModel)]="foto.url" 
-               required               
                type="text" 
                class="form-control">
+        <span class="alert-danger"
+              [hidden]="formControl.controls.url.valid || formControl.controls.url.pristine">
+          URL deve ser informada
+        </span>
       </div>
       <div class="form-group">
         <label for="">Descrição:</label>
-        <textarea name="descricao" [(ngModel)]="foto.descricao" class="form-control"></textarea>
+        <textarea formControlName="descricao" 
+                  [(ngModel)]="foto.descricao" 
+                  class="form-control"></textarea>
       </div>
 
-      <button type="submit" class="btn btn-primary">Salvar</button>
+      <button [disabled]="formControl.invalid" type="submit" class="btn btn-primary">Salvar</button>
 
       <a [routerLink]="['']" class="btn btn-primary">Voltar</a>
     </div>

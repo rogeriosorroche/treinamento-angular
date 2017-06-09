@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutesModule } from './app.routes';
 
@@ -13,6 +14,8 @@ import { FotoModule } from './foto/foto.module';
 import { AppComponent } from './app.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { ListagemComponent } from './listagem/listagem.component';
+
+import { FotoServico } from './servico/foto.service';
 
 @NgModule({
   declarations: [
@@ -25,10 +28,11 @@ import { ListagemComponent } from './listagem/listagem.component';
     BrowserModule,
     HttpModule,
     FormsModule,
+    ReactiveFormsModule,
     FotoModule,
     PainelModule
   ],
-  providers: [],
+  providers: [FotoServico],
   bootstrap: [AppComponent]
 })
 export class AppModule { 
